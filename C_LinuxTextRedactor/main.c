@@ -19,7 +19,7 @@
  *      Editor is designed to open a file on the computer, appending to it
  *      Some information, save the file to kompyuetere.
  *
- *      F1 - open faylb F2 - save the file, F3 - exit from the program
+ *      F1 - open file, F2 - save the file, F3 - exit from the program
  *      Implemented as BACKSPACE and ENTER keys.
  *      Implemented using the ncurses library.
  *      Implemented key UP, DOWN, LEFT, RIGHT.
