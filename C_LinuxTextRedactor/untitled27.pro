@@ -5,4 +5,4 @@ CONFIG -= qt
 
 SOURCES += main.c
 
-LDFLAGS =+ lncurses
+LDFLAGS=+lncurses
