@@ -17,7 +17,6 @@
  *
  *
  */
-
 #include <stdio.h>
 #include <curses.h>
 #include <termios.h>
@@ -31,7 +30,7 @@
 
 void delete_menu(WINDOW **items,int count);
 
-void sig_winch()                    					// <---. size display
+void sig_winch()                    								// <---. size display
 {
     struct winsize size;
     ioctl(fileno(stdout), TIOCGWINSZ,(char*)&size);
@@ -41,10 +40,10 @@ void sig_winch()                    					// <---. size display
 int main()
 {
 	char* file_name[50];									// <---. имена файлов
-	WINDOW* item_main;										// <---. основное окно
-	WINDOW** items;											// <---. указатель на массив окон для клавиш пермещений
+	WINDOW* item_main;									// <---. основное окно
+	WINDOW** items;										// <---. указатель на массив окон для клавиш пермещений
 
-	WINDOW *interface1, *interface2;						// <---. верхняя и нижняя линии для команд
+	WINDOW *interface1, *interface2;							// <---. верхняя и нижняя линии для команд
 														
 
 	initscr();          
