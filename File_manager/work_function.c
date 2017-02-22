@@ -2,7 +2,7 @@
 
 #include "FileManager.c"
 
-void delete_menu(WINDOW **items, int count)									// <---. удаляет выделенную память					
+void delete_menu(WINDOW **items, int count)				// <---. удаляет выделенную память					
 {
     int i;
     for (i=0;i <= count; ++i)
@@ -26,3 +26,4 @@ void sig_winch()                    					// <---. size display
     ioctl(fileno(stdout), TIOCGWINSZ,(char*)&size);
     resizeterm(size.ws_row, size.ws_col);
 }
+
