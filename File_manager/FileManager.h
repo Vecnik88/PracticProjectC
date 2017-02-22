@@ -18,9 +18,10 @@
 #include <dirent.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
 #include "FileManager.c"
-#include "work_function.c"
+#include "work_function.c"						
 
 void sig_winch();
 
@@ -31,7 +32,7 @@ void file_name_directory(char* arr, char* arr_return, char** file_name,
 
 void exit_programm(WINDOW* item_main, WINDOW** items, int size_directory);
 
-int event_proccessing(WINDOW* item_main, WINDOW** items, char** file_name, int size_directory, int start_col);
+int event_proccessing(WINDOW* item_main, WINDOW** items, char** file_name, int size_directory);
 
 int open_and_read_directory(WINDOW* item_main, DIR* dir, char** file_name, char* arr, int* directory);
 
