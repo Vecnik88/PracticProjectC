@@ -2,6 +2,11 @@
 
 #include "work_function.c"
 
+#define MAX_LINES_FOR_EKRAN 48              // <---. максимальное количество линий, которые вмещает экран для отображения
+#define START_COL 2                         // <---. стартовая позиция столбцов
+#define SIZE_LINES 1                        // <---. размер линии нового окна
+#define SIZE_ROWS 80                        // <---. размер столбцов нового окна
+
 void file_name_directory(char* arr, char* arr_return, char** file_name, 
 						 int selected, WINDOW** items, DIR* dir, int size_directory, int* directory)
 {
@@ -46,12 +51,11 @@ if(strcmp(file_name[selected], "..") == 0)
 		return;
 }
 
-int event_proccessing(WINDOW* item_main, WINDOW** items, char** file_name, int size_directory, int start_col)
+int event_proccessing(WINDOW* item_main, WINDOW** items, char** file_name, int size_directory)
 {
 	int key;
 	int x;
 	int flag = 0;
-	int size_ekr_str = 48;
 	int i;
 	int selected = 0;
 
@@ -60,10 +64,10 @@ int event_proccessing(WINDOW* item_main, WINDOW** items, char** file_name, int s
 	keypad(items[selected], 1);
     wrefresh(item_main);
 
-while (key=wgetch(items[selected]))							// <---. обрабатываем события клавиатуры
-    {															// 		 ENTER, KEY_UP, KEY_DOWN
+while (key=wgetch(items[selected]))							       // <---. обрабатываем события клавиатуры
+    {															   // 		 ENTER, KEY_UP, KEY_DOWN
 
-    	if(key==KEY_F(1)) 										// if F1 - exit programm
+    	if(key==KEY_F(1)) 										   // if F1 - exit programm
     		{
     			exit_programm(item_main, items, size_directory);
     		}
@@ -78,16 +82,16 @@ while (key=wgetch(items[selected]))							// <---. обрабатываем со
             	{
             		wclear(item_main);
 
-            		for(x = selected; x < selected+size_ekr_str; ++x)
+            		for(x = selected; x < selected + MAX_LINES_FOR_EKRAN; ++x)
             		{
             			delwin(items[x]);
             		}
 
             			--selected;
 
-            		for(x = selected; x < selected+size_ekr_str; ++x)
+            		for(x = selected; x < selected + MAX_LINES_FOR_EKRAN; ++x)
             		{
-            			items[x]=derwin(item_main,1,80,(i++),(start_col+1));
+            			items[x]=derwin(item_main, SIZE_LINES, SIZE_ROWS,(i++), START_COL);
 
     					wbkgd(items[x],COLOR_PAIR(1));
     					wprintw(items[x], "/%s", file_name[x]);	
@@ -120,11 +124,11 @@ while (key=wgetch(items[selected]))							// <---. обрабатываем со
 
             	if(selected==(size_directory-1)) continue;
 		
-            	if(flag == (size_ekr_str-1))						
+            	if(flag == (MAX_LINES_FOR_EKRAN-1))						
             		{		
             			wclear(item_main);
             			
-            			for(x = selected-size_ekr_str; x <= selected; ++x)
+            			for(x = selected-MAX_LINES_FOR_EKRAN; x <= selected; ++x)
             			{
 
             				delwin(items[x]);
@@ -132,10 +136,10 @@ while (key=wgetch(items[selected]))							// <---. обрабатываем со
             			}
             				++selected;
             				        		
-            				for(x = selected-(size_ekr_str-1); x <= selected; ++x)
+            				for(x = selected-(MAX_LINES_FOR_EKRAN-1); x <= selected; ++x)
             			{
 
-            				items[x]=derwin(item_main,1,80,(i++),(start_col+1));						
+            				items[x]=derwin(item_main, SIZE_LINES, SIZE_ROWS,(i++),START_COL);						
     						wbkgd(items[x],COLOR_PAIR(1));
     						wprintw(items[x], "/%s", file_name[x]);	
     						wrefresh(items[x]);
@@ -156,7 +160,7 @@ while (key=wgetch(items[selected]))							// <---. обрабатываем со
                 wrefresh(items[selected]);
                 keypad(items[selected], 1);
                 
-                if(flag < size_ekr_str)
+                if(flag < MAX_LINES_FOR_EKRAN)
                 	++flag;
                 
                 continue;
@@ -199,12 +203,12 @@ int open_and_read_directory(WINDOW* item_main, DIR* dir, char** file_name, char*
 
 void print_directory(WINDOW* item_main, WINDOW** items, char** file_name, int size_directory)
 {
-	int j = 0, i = 6, start_col = 1, size_ekr = 48;
+	int j = 0, i = 6;
   
-    	while(j!=size_directory && j < size_ekr)
+    	while(j!=size_directory && j < MAX_LINES_FOR_EKRAN)
     	{
     	
-    		items[j]=derwin(item_main,1,80,(i++),(start_col+1));
+    		items[j]=derwin(item_main, SIZE_LINES, SIZE_ROWS,(i++), START_COL);
     		wbkgd(items[j],COLOR_PAIR(1));
     	
     		wprintw(items[j], "/%s", file_name[j]);
