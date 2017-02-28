@@ -11,7 +11,6 @@ void delete_menu(WINDOW **items, int count)				// <---. удаляет выде�
     }
     free(items);
 }
-
 void exit_programm(WINDOW* item_main, WINDOW** items, int size_directory)
 {
 	delete_menu(items, size_directory);
@@ -19,7 +18,6 @@ void exit_programm(WINDOW* item_main, WINDOW** items, int size_directory)
     endwin();
 	exit(EXIT_SUCCESS);
 }
-
 void sig_winch()                    					// <---. size display
 {
     struct winsize size;
