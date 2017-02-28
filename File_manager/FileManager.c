@@ -8,7 +8,7 @@
 #define SIZE_ROWS 80                        // <---. размер столбцов нового окна
 
 void file_name_directory(char* arr, char* arr_return, char** file_name, 
-						 int selected, WINDOW** items, DIR* dir, int size_directory, int* directory)
+						int selected, WINDOW** items, DIR* dir, int size_directory, int* directory)
 {
 if(strcmp(file_name[selected], ".") == 0)
 	{
