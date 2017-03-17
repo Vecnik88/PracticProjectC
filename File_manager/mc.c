@@ -1,17 +1,16 @@
 #include "FileManager.h"
 
-int main()
+int main(int argc, char* argv[])
 {
 	WINDOW* item_main, *interface1, *interface2;			// <---. основное окно, верхняя и нижняя рамки
 	WINDOW** items;											// <---. указатель на массив окон для клавиш пермещений
-			
+	int status;
 	DIR *dir;
 
 	char* file_name[500];									// <---. имена файлов
 	char arr[200] = "/";									// <---. основная директория
     char  arr_return[200] = "ky";							// <---. для .. 
-    
-    int start_col = 1;										// <---. стартовая позиция для положения окон
+
 	int size_directory = 0;									// <---. размер директории
 	int directory[500];										// <---. тип директории, если 1, то это файл
 
@@ -35,7 +34,8 @@ int main()
     wbkgd(interface1, COLOR_PAIR(4));
     interface2 = derwin(item_main, 2, 150, 54,0);
    	wbkgd(interface2, COLOR_PAIR(4));
-    	
+
+
 while(TRUE)
     {
     	wclear(item_main);
@@ -56,16 +56,32 @@ while(TRUE)
 
 		print_directory(item_main, items, file_name, size_directory);
     
-		int selected = event_proccessing(item_main, items, file_name, size_directory, start_col);
+		int selected = event_proccessing(item_main, items, file_name, size_directory);
 
 		file_name_directory(arr, arr_return, file_name, selected, items, dir, size_directory, directory);
 
-		if(directory[selected]==1)												// <---. если файл, то открываем его
-		{
-			execl(arr, arr, NULL); break;
-		}
+        if(directory[selected] == 1)
+        {
+            pid_t pid = fork();
+            if(pid < 0)
+            {
+                perror("fork failed");
+                exit(1);
+            }
+            
+            if(pid != 0)
+            {
+                wait(NULL);
+            }
+            else
+            {   
+                execl(arr, arr, NULL);
+            }          
 
-	}
+            return 0;
+        }
+
+}
 
 exit_programm(item_main, items, size_directory);
 }
