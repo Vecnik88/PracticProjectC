@@ -10,6 +10,7 @@ INCLUDE = .
 CFLAGS = -g -Wall -ansi --std=c99
 
 # Опции для окончательной версии
+
 # CFLAGS =-O -Wall -ansi
 
 myapp: mc.o FileManager.o
