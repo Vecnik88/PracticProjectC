@@ -20,10 +20,7 @@
 #include <dirent.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#include <sys/wait.h>
-
-#include "FileManager.c"
-#include "work_function.c"						
+#include <sys/wait.h>					
 
 void sig_winch();
 
