@@ -83,3 +83,5 @@ while(TRUE)
 
 exit_programm(item_main, items, size_directory);
 }
+
+
