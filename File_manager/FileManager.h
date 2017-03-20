@@ -34,4 +34,3 @@ int event_proccessing(WINDOW* item_main, WINDOW** items, char** file_name, int s
 int open_and_read_directory(WINDOW* item_main, DIR* dir, char** file_name, char* arr, int* directory);
 
 void print_directory(WINDOW* item_main, WINDOW** items, char** file_name, int size_directory);
-
