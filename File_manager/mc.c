@@ -20,7 +20,6 @@ int main(int argc, char* argv[])
     curs_set(FALSE);
     start_color();
     noecho();
-
     // цветовые пары
     init_pair(1, COLOR_WHITE, COLOR_BLUE);
     init_pair(2, COLOR_BLACK, COLOR_WHITE);
