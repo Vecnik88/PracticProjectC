@@ -1,14 +1,39 @@
-#pragma once
-
-#include "work_function.c"
+#include "FileManager.h"
 
 #define MAX_LINES_FOR_EKRAN 48              // <---. максимальное количество линий, которые вмещает экран для отображения
 #define START_COL 2                         // <---. стартовая позиция столбцов
 #define SIZE_LINES 1                        // <---. размер линии нового окна
 #define SIZE_ROWS 80                        // <---. размер столбцов нового окна
 
+/* РАБОЧИЕ ФУНКЦИИ */
+void delete_menu(WINDOW **items, int count)                // <---. удаляет выделенную память                  
+{
+    int i;
+    for (i=0;i <= count; ++i)
+    {
+        delwin(items[i]);
+    }
+    free(items);
+}
+
+void exit_programm(WINDOW* item_main, WINDOW** items, int size_directory)
+{
+    delete_menu(items, size_directory);
+    delwin(item_main);
+    endwin();
+    exit(EXIT_SUCCESS);
+}
+
+void sig_winch()                                        // <---. size display
+{
+    struct winsize size;
+    ioctl(fileno(stdout), TIOCGWINSZ,(char*)&size);
+    resizeterm(size.ws_row, size.ws_col);
+}
+
+/* ФУНКЦИИ ФАЙЛОВОГО МЕНЕДЖЕРА */
 void file_name_directory(char* arr, char* arr_return, char** file_name, 
-						int selected, WINDOW** items, DIR* dir, int size_directory, int* directory)
+						 int selected, WINDOW** items, DIR* dir, int size_directory, int* directory)
 {
 if(strcmp(file_name[selected], ".") == 0)
 	{
@@ -203,6 +228,19 @@ int open_and_read_directory(WINDOW* item_main, DIR* dir, char** file_name, char*
 
 void print_directory(WINDOW* item_main, WINDOW** items, char** file_name, int size_directory)
 {
+	int j = 0, i = 6;
+  
+    	while(j!=size_directory && j < MAX_LINES_FOR_EKRAN)
+    	{
+    	
+    		items[j]=derwin(item_main, SIZE_LINES, SIZE_ROWS,(i++), START_COL);
+    		wbkgd(items[j],COLOR_PAIR(1));
+    	
+    		wprintw(items[j], "/%s", file_name[j]);
+        	++j;
+
+    	}  
+}
 	int j = 0, i = 6;
   
     	while(j!=size_directory && j < MAX_LINES_FOR_EKRAN)
