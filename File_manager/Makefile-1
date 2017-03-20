@@ -1,2 +1,0 @@
-all:
-	gcc mc.c -o m -lncurses
