@@ -6,6 +6,7 @@
 #define SIZE_ROWS 80                        // <---. размер столбцов нового окна
 
 /* РАБОЧИЕ ФУНКЦИИ */
+
 void delete_menu(WINDOW **items, int count)                // <---. удаляет выделенную память                  
 {
     int i;
