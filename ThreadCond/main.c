@@ -8,8 +8,6 @@
  */
 
 #include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
 #include <pthread.h>
 
 #define NUMBER_SIGNAL 150
