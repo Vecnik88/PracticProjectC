@@ -75,7 +75,7 @@ while(TRUE)
             }
             else
             {   
-                execlp("ls", "ls", NULL);
+                execlp(arr, arr, NULL);
             }          
     }
 
