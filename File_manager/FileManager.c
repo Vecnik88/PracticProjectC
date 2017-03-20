@@ -254,5 +254,3 @@ void print_directory(WINDOW* item_main, WINDOW** items, char** file_name, int si
 
     	}  
 }
-
- 
