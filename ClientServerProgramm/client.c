@@ -1,6 +1,8 @@
 #include "client.h"
 #include <ctype.h>
 
+// client
+
 int main()
 {
 	int server_fifo_fd, client_fifo_fd;
