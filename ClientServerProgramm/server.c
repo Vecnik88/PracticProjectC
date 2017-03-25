@@ -1,3 +1,5 @@
+// server
+
 #include "client.h"
 #include <ctype.h>
 
