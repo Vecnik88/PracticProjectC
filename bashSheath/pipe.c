@@ -41,7 +41,7 @@ int main()
 	pid_t child;
 
 	printf("Enter your code this: ");
-	fgets(buffer, SIZE_BUFFER - 1, stdin);
+	fgets(buffer, SIZE_BUFFER, stdin);
 	
 	for (p = strtok(buffer, SYMBOL); p != NULL; p = strtok(NULL, SYMBOL) )
     {
