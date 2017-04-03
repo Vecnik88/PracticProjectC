@@ -5,3 +5,4 @@ build_server:
 
 build_client:
 	gcc -ggdb -O0 -o client client.c
+	
