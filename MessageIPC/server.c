@@ -8,7 +8,6 @@
 	 				сервер принимает сообщения и выводит их на общий экран 
 
 */
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
