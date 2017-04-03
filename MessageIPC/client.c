@@ -1,6 +1,4 @@
-/*
-	Client
-*/
+/* Client */
 
 #include <stdlib.h>
 #include <stdio.h>
