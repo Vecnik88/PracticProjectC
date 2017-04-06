@@ -1,6 +1,6 @@
 // Created by Vecnik88 05.04.2017
 
-/* * ### Spin_lock *** ### */
+/* * ### Spin_lock * ### */
 
 #include <stdio.h>
 #include <pthread.h>
