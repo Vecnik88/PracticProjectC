@@ -1,3 +1,7 @@
+// Created by Vecnik88
+
+/* Сниффер с возможностью задавать фильтр при запуске программы */
+
 #include <pcap.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -81,3 +85,6 @@ int main(int argc, char const *argv[])
 
 	return 0;
 }
+
+
+
