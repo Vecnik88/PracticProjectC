@@ -1,3 +1,7 @@
+// Created by Vecnik88
+
+/* Простой сниффер с фильтром для порта 23 */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <pcap.h>
