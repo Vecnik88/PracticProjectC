@@ -74,3 +74,5 @@ int errorMessage(char* str, char* strErr, int i)
 
 	return i;
 }
+
+
