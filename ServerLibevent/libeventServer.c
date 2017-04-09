@@ -1,3 +1,5 @@
+// Created by Vecnik88
+
 /* Эхо сервер TCP реализованный при помощи библиотеки libevent */
 
 #include <event2/listener.h>
