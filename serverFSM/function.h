@@ -25,14 +25,14 @@
 
 #define SIZEBUF 1024
 
-int set_nonblock(int fd);					        // <---. делает сокет неблокирующим
-int inputSocket();							          // <---. извлекает нужный сокет для отправки
+int set_nonblock(int fd);			// <---. делает сокет неблокирующим
+int inputSocket();			        // <---. извлекает нужный сокет для отправки
 
 void resultOperation();						        // <---. удаляет сокет, помечает его исполненным
 void readMaterial(char* buffer, int fd);	// <---. считывает данные из сокета
 void sendMaterial(char* buffer, int fd);	// <---. отправляет данные сокет
-void messageError(char* str);				      // <---. сообщение ошибки
+void messageError(char* str);			// <---. сообщение ошибки
 
-void* workTCP();							            // <---. рабочая функция сервера TCP
-void* ServerUDP();							          // <---. сервер UDP в отдельном потоке
-void* ServerTCP();							          // <---. сервер ТСР в отдельном потоке
+void* workTCP();			       	// <---. рабочая функция сервера TCP
+void* ServerUDP();				// <---. сервер UDP в отдельном потоке
+void* ServerTCP();				// <---. сервер ТСР в отдельном потоке
