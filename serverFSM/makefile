@@ -20,3 +20,4 @@ function.o: function.c
 
 serverFSM.o: serverFSM.c
 	$(CC) -I$(INCLUDE) $(CFLAGS) -c serverFSM.c function.h -lpthread
+
