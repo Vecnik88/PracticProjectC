@@ -20,3 +20,5 @@ message2.o: message2.c
 
 function.o: function.c
 	$(CC) -I$(INCLUDE) $(CFLAGS) -c function.c function.h
+	
+	
