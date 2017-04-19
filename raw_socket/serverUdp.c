@@ -57,5 +57,3 @@ void perrorMessage(char* str)
 	perror(str);
 	exit(0);
 }
-
-
