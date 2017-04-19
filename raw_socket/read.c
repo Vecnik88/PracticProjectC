@@ -77,7 +77,7 @@ int main(void)
 	ip->iph_ihl = 5;
 	ip->iph_ver = 4;
 	ip->iph_tos = 16;
-	ip->iph_len = sizeof(ip_header) + sizeof(udp_header);
+	ip->iph_len = sizeof(ip_header) + sizeof(udp_header) + sizeof(buffer);
 	ip->iph_ident = htons(rand()%65000);
 	ip->iph_ttl = 64;
 	ip->iph_protocol = IPPROTO_UDP;
@@ -89,8 +89,8 @@ int main(void)
 	udp->udph_destport = htons(12345);
 
 	udp->udph_len = htons(sizeof(udp_header));
-	udp->udph_chksum = 0;//csum((unsigned short*)buffer, sizeof(ip_header) + sizeof(udp_header));
-	//setsockopt(raw_socket_udp, IPPROTO_IP, IP_HDRINCL, val, sizeof(one));
+	udp->udph_chksum = csum((unsigned short*)buffer, sizeof(ip_header) + sizeof(udp_header) + sizeof(buffer));
+	setsockopt(raw_socket_udp, IPPROTO_IP, IP_HDRINCL, val, sizeof(one));
 
 	memset(buffer, 0, sizeof(buffer));
 
