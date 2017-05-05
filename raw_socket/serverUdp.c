@@ -13,14 +13,15 @@ void perrorMessage(char* str);
 int main(int argc, char const *argv[])
 {
 	int socket_udp;
-	int size_server_udp;
+	int size_server_udp, size_client_udp;
 	int sizeRead;
 
-	char buffer[SIZE_BUFFER];
+	char buffer[SIZE_BUFFER] = "message buffer";
+	char buffer1[SIZE_BUFFER] = "message buffer 1";
 
 	struct sockaddr_in server_udp;
 
-	if((socket_udp = socket(PF_INET, SOCK_DGRAM, 0)) < 0)
+	if((socket_udp = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP)) < 0)
 		perrorMessage("socket_udp");
 
 	
@@ -32,21 +33,24 @@ int main(int argc, char const *argv[])
 
 	if(bind(socket_udp, (struct sockaddr*) &server_udp, size_server_udp) < 0)
 		perrorMessage("binding");
-	strcpy(buffer, "Hello world");
+
+	//strcpy(buffer, "message buffer");
+	//strcpy(buffer, "message buffer 1");
+	
 	while(1)
 	{
-		sizeRead = recvfrom(socket_udp, buffer, SIZE_BUFFER, MSG_NOSIGNAL,
+		printf("%s\n", buffer);
+		printf("%s\n", buffer1);
+		
+		sizeRead = recvfrom(socket_udp, buffer1, SIZE_BUFFER, MSG_NOSIGNAL,
 							(struct sockaddr*) &server_udp, &size_server_udp);
 
-		buffer[sizeRead] = '\0';
+		buffer1[sizeRead] = '\0';
+
+		printf("%s\n", buffer1);
 
 		sendto(socket_udp, buffer, SIZE_BUFFER, MSG_NOSIGNAL,
 				(struct sockaddr*) &server_udp, size_server_udp);
-
-		if(strncmp(buffer, "end", 3) == 0)
-			break;
-	
-		printf("%s\n", buffer);
 	}
 
 	return 0;
@@ -57,3 +61,4 @@ void perrorMessage(char* str)
 	perror(str);
 	exit(0);
 }
+
