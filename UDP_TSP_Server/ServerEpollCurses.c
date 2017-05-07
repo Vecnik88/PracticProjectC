@@ -1,7 +1,5 @@
 // Created by Vecnik88
-
 /* *** Эхо сервер для UDP TCP клиента *** */ 
-
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
