@@ -28,8 +28,6 @@ int main(int argc, char const *argv[])
 	{
 		recvfrom(fd, buffer, 4096, MSG_NOSIGNAL, (struct sockaddr*)&sin, &sizeSin);
 		printf("recv\n");
-		for(i = 0; i < 50; ++i)
-			buffer[i];
 
 		sleep(1);
 	}
