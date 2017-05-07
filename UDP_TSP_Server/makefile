@@ -8,3 +8,5 @@ build_UDPclient:
 	
 build_Server:
 	gcc -ggdb -O0 -o server ServerEpollCurses.c -pthread
+
+
