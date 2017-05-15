@@ -5,7 +5,6 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-
 #define SIZE_BUF 512
 
 int main()
