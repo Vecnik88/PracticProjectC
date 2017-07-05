@@ -101,5 +101,3 @@ int main(int argc, char *argv[])
     ping_it(&dst);
     return 0;
 }
-
-
